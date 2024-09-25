@@ -16,16 +16,19 @@ class PositionSeeder extends Seeder
     public function run()
     {
         Position::firstOrCreate([
-            'name' => 'Biro ' . config('app.name'),
+            'name' => 'Biro 2 ' . config('app.name'),
         ]);
         Position::firstOrCreate([
-            'name' => 'Rektor ' . config('app.name'),
+            'name' => 'Biro 1 ' . config('app.name'),
         ]);
         Position::firstOrCreate([
             'name' => 'Super Admin ' . config('app.name'),
         ]);
         Position::firstOrCreate([
-            'name' => 'Admin ' . config('app.name'),
+            'name' => 'Biro 3 ' . config('app.name'),
+        ]);
+        Position::firstOrCreate([
+            'name' => 'LP2M ' . config('app.name'),
         ]);
     }
 }

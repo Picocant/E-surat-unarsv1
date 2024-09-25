@@ -19,7 +19,7 @@ class IncomingLetterDispositionSeeder extends Seeder
     public function run()
     {
         $incomingLetters = IncomingLetter::all();
-        $user = User::where('role', User::ROLE_KEPALA_SEKOLAH)->first();
+        $user = User::where('role', User::ROLE_BIRO_1)->first();
 
         foreach ($incomingLetters as $incomingLetter) {
             $incomingLetterDisposition = new IncomingLetterDisposition([

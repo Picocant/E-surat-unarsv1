@@ -38,8 +38,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-position', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
-                User::ROLE_STAF_TU,
+                User::ROLE_BIRO_1,
+                User::ROLE_BIRO_2,
             ]);
         });
 
@@ -64,8 +64,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-user', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
-                User::ROLE_STAF_TU,
+                User::ROLE_BIRO_1,
+                User::ROLE_BIRO_2,
             ]);
         });
 
@@ -114,63 +114,63 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-incoming-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('create-incoming-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('update-incoming-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('delete-incoming-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-incoming-letter-disposition', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('create-incoming-letter-disposition', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('update-incoming-letter-disposition', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('delete-incoming-letter-disposition', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-student', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -195,7 +195,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-active-student-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -220,14 +220,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-active-student-letter-verification', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-student-certificate', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -253,7 +253,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-school-document', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -278,14 +278,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('read-pindah-prodi', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-school-transfer-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -310,14 +310,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-school-transfer-letter-verification', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-sppd-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -342,14 +342,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-sppd-letter-verification', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('read-leave-permit-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
@@ -374,19 +374,19 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-leave-permit-letter-verification', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
-                User::ROLE_KEPALA_SEKOLAH,
+                User::ROLE_BIRO_1,
             ]);
         });
 
         Gate::define('request-leave-permit-letter', function (User $user) {
             return in_array($user->role, [
-                User::ROLE_GURU,
+                User::ROLE_BIRO_2,
             ]);
         });
 
         Gate::define('read-received-sppd-letter', function (User $user) {
             return in_array($user->role, [
-                User::ROLE_GURU,
+                User::ROLE_BIRO_2,
             ]);
         });
 

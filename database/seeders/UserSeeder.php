@@ -16,11 +16,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $guru = Position::where('name', 'Biro ' . config('app.name'))->first();
-        $kepalaSekolah = Position::where('name', 'Rektor ' . config('app.name'))->first();
+        $biro2 = Position::where('name', 'Biro 2 ' . config('app.name'))->first();
+        $biro1 = Position::where('name', 'Biro 1 ' . config('app.name'))->first();
         $kepalaTU = Position::where('name', 'Super Admin ' . config('app.name'))->first();
-        $staf = Position::where('name', 'Admin ' . config('app.name'))->first();
-
+        $biro3 = Position::where('name', 'Biro 3 ' . config('app.name'))->first();
+        $lp2m = Position::where('name', 'LP2M ' . config('app.name'))->first();
+        
         User::firstOrCreate([
             'email' => 'superadmin@gmail.com'
         ], [
@@ -36,45 +37,63 @@ class UserSeeder extends Seeder
         ]);
 
         User::firstOrCreate([
-            'email' => 'biro@gmail.com'
+            'email' => 'biro1@gmail.com'
         ], [
-            'position_id' => $guru->id,
+            'position_id' => $biro1->id,
             'password' => Hash::make('password'),
             'is_active' => true,
-            'role' => User::ROLE_GURU,
+            'role' => User::ROLE_BIRO_1,
             'name' => 'Pio',
-            'nip' => '20000420 201505 1 007',
-            'date_of_bird' => '2000-04-20',
+            'nip' => '20000704 201505 1 006',
+            'date_of_bird' => '2000-07-04',
             'gender' => User::GENDER_MALE,
             'address' => 'Situbondo',
         ]);
 
         User::firstOrCreate([
-            'email' => 'admin@gmail.com'
+            'email' => 'biro2@gmail.com'
         ], [
-            'position_id' => $staf->id,
+            'position_id' => $biro2->id,
             'password' => Hash::make('password'),
             'is_active' => true,
-            'role' => User::ROLE_STAF_TU,
-            'name' => 'Andra ',
-            'nip' => '19730926 201505 1 009',
-            'date_of_bird' => '1973-09-26',
+            'role' => User::ROLE_BIRO_2,
+            'name' => 'Pio',
+            'nip' => '20000704 201505 1 006',
+            'date_of_bird' => '2000-07-04',
             'gender' => User::GENDER_MALE,
             'address' => 'Situbondo',
         ]);
 
         User::firstOrCreate([
-            'email' => 'rektor@gmail.com'
+            'email' => 'biro3@gmail.com'
         ], [
-            'position_id' => $kepalaSekolah->id,
+            'position_id' => $biro3->id,
             'password' => Hash::make('password'),
             'is_active' => true,
-            'role' => User::ROLE_KEPALA_SEKOLAH,
-            'name' => 'Surya',
-            'nip' => '19670505 198804 1 002',
-            'date_of_bird' => '2001-11-09',
+            'role' => User::ROLE_BIRO_3,
+            'name' => 'Pio',
+            'nip' => '20000704 201505 1 006',
+            'date_of_bird' => '2000-07-04',
             'gender' => User::GENDER_MALE,
             'address' => 'Situbondo',
         ]);
+
+        User::firstOrCreate([
+            'email' => 'lp2m@gmail.com'
+        ], [
+            'position_id' => $lp2m->id,
+            'password' => Hash::make('password'),
+            'is_active' => true,
+            'role' => User::ROLE_LP2M,
+            'name' => 'Pio',
+            'nip' => '20000704 201505 1 006',
+            'date_of_bird' => '2000-07-04',
+            'gender' => User::GENDER_MALE,
+            'address' => 'Situbondo',
+        ]);
+
+        
+
+        
     }
 }
