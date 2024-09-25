@@ -19,6 +19,8 @@
                             <th>Nama Mahasiswa</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
+                            <th>Fakultas</th>
+                            <th>Prodi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -30,6 +32,8 @@
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->gender }}</td>
                             <td>{{ $student->date_of_bird->isoFormat('DD MMMM Y') }}</td>
+                            <td>{{ $student->fakultas }}</td>
+                            <td>{{ $student->prodi }}</td>
                             <td nowrap>
                                 <a href="{{ route('student.show', ['student' => $student]) }}" class="btn btn-sm btn-light-primary">Detail</a>
                             </td>

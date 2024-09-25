@@ -48,6 +48,15 @@
                             <label for="guardian" class="form-label">Nama wali (tidak wajib)</label>
                             <input type="text" name="guardian" id="guardian" class="form-control" value="{{ old('guardian') }}">
                         </div>
+                        <div class="form-group">
+                            <label for="fakultas" class="form-label">Nama Fakultas </label>
+                            <input type="text" name="fakultas" id="fakultas" class="form-control" value="{{ old('fakultas') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="prodi" class="form-label">Nama Prodi</label>
+                            <input type="text" name="prodi" id="prodi" class="form-control" value="{{ old('prodi') }}">
+                        </div>
+                        </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                         </div>

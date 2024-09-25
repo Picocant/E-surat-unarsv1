@@ -3,9 +3,9 @@
 @section('content')
 <div class="row">
     <div class="col-lg-6 mx-auto">
-        <h3 class="mb-4">Surat Keterangan Pindah Universitas</h3>
+        <h3 class="mb-4">Surat Keterangan Pindah Prodi</h3>
         <div class="mb-3">
-            <a href="{{ route('school-transfer-letter.index') }}" class="btn btn-sm btn-primary">Kembali</a>
+            <a href="{{ route('pindah-prodi.index') }}" class="btn btn-sm btn-primary">Kembali</a>
         </div>
         <div class="card">
             <div class="card-content">
@@ -15,7 +15,7 @@
                         terlebih dahulu.
                 </div>
                 @else
-                <form action="{{ route('school-transfer-letter.store') }}" method="post">
+                <form action="{{ route('pindah-prodi.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="student_id" class="form-label">Mahasiswa</label>
@@ -28,7 +28,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="new_school" class="form-label">Universitas Baru</label>
+                        <label for="new_school" class="form-label">Prodi Baru</label>
                         <input type="text" name="new_school" id="new_school" class="form-control" value="{{ old('new_school') }}">
                     </div>
                     <div class="form-group">

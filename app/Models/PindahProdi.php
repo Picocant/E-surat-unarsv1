@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PindahProdi extends Model
 {
+    
     use HasFactory, UUIDPrimaryKey, Letterable;
 
     protected $fillable = [

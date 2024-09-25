@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pindah_prodi_tablert', function (Blueprint $table) {
-            $table->id();
+        Schema::create('pindah_prodis', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('student_id');
+            $table->string('new_prodi');
+            $table->text('reason');
             $table->timestamps();
         });
     }
@@ -26,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pindah_prodi_tablert');
+        Schema::dropIfExists('pindah_prodis');
     }
 };
+

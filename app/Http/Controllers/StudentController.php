@@ -60,6 +60,8 @@ class StudentController extends Controller
             'father' => ['required', 'max:50'],
             'mother' => ['required', 'max:50'],
             'guardian' => ['nullable', 'max:50'],
+            'fakultas' => ['required', 'max:50'],
+            'prodi' => ['required', 'max:50'],
         ]);
 
         Student::create([
@@ -71,9 +73,11 @@ class StudentController extends Controller
             'father' => $data['father'],
             'mother' => $data['mother'],
             'guardian' => $data['guardian'],
+            'fakultas' => $data['fakultas'],
+            'prodi' => $data['prodi'],
         ]);
 
-        Activity::dispatch('membuat data siswa');
+        Activity::dispatch('membuat data mahasiswa');
 
         return to_route('student.index')->with('swal.success', 'Data Mahasiswa berhasil ditambahkan');
     }
@@ -129,6 +133,8 @@ class StudentController extends Controller
             'father' => ['required', 'max:50'],
             'mother' => ['required', 'max:50'],
             'guardian' => ['nullable', 'max:50'],
+            'fakultas' => ['required', 'max:50'],
+            'prodi' => ['required', 'max:50'],
         ]);
 
         $student->name = $data['name'];
@@ -139,6 +145,8 @@ class StudentController extends Controller
         $student->father = $data['father'];
         $student->mother = $data['mother'];
         $student->guardian = $data['guardian'];
+        $student->fakultas = $data['fakultas'];
+        $student->prodi = $data['prodi'];
         $student->save();
 
         Activity::dispatch('memperbarui data siswa');

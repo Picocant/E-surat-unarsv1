@@ -25,7 +25,9 @@ class Student extends Model
         'address',
         'father',
         'mother',
-        'guardian'
+        'guardian',
+        'fakultas',
+        'prodi',
     ];
 
     protected $casts = [
@@ -51,4 +53,5 @@ class Student extends Model
     {
         return $this->hasMany(PindahProdi::class);
     }
+
 }

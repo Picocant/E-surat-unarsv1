@@ -61,6 +61,16 @@
                             <td>:</td>
                             <td>{{ $student->guardian }}</td>
                         </tr>
+                        <tr>
+                            <td>Fakultas</td>
+                            <td>:</td>
+                            <td>{{ $student->fakultas }}</td>
+                        </tr>
+                        <tr>
+                            <td>Prodi</td>
+                            <td>:</td>
+                            <td>{{ $student->fakultas }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

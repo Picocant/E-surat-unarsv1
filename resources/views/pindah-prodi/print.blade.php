@@ -1,32 +1,32 @@
 @extends('layouts.print')
 
 @section('content')
-<h3 style="text-align: center; text-decoration: underline; margin:1rem auto .3rem auto;">SURAT KETERANGAN PINDAH SEKOLAH
+<h3 style="text-align: center; text-decoration: underline; margin:1rem auto .3rem auto;">SURAT KETERANGAN PINDAH PRODI
 </h3>
-<h4 style="text-align: center; margin:0;">NOMOR. {{ $schoolTransferLetter->letter->letter_number }}</h4>
+<h4 style="text-align: center; margin:0;">NOMOR. {{ $pindahprodis->letter->letter_number }}</h4>
 <div style="margin: 4rem auto">
     <p>Yang bertanda tangan di bawah ini {{ $decoded['signer']['position'] }}, dengan ini menerangkan bahwa:</p>
     <table style="width: 100%; margin:0 2rem;">
         <tr>
             <td>Nama</td>
             <td class="colons">:</td>
-            <td>{{ $schoolTransferLetter->student->name }}</td>
+            <td>{{ $pindahprodis->student->name }}</td>
         </tr>
         <tr>
             <td>NIM</td>
             <td class="colons">:</td>
-            <td>{{ $schoolTransferLetter->student->student_number }}</td>
+            <td>{{ $pindahprodis->student->student_number }}</td>
         </tr>
         <tr>
             <td>Tanggal Lahir</td>
             <td class="colons">:</td>
-            <td>{{ $schoolTransferLetter->student->date_of_bird->isoFormat('DD MMMM Y') }}</td>
+            <td>{{ $pindahprodis->student->date_of_bird->isoFormat('DD MMMM Y') }}</td>
         </tr>
-        @if ($schoolTransferLetter->student->guardian)
+        @if ($pindahprodis->student->guardian)
         <tr>
             <td>Nama Orang Tua/Wali</td>
             <td class="colons">:</td>
-            <td>{{ $schoolTransferLetter->student->guardian }}</td>
+            <td>{{ $pindahprodis->student->guardian }}</td>
         </tr>
         @else
         <tr>

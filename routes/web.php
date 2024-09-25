@@ -166,15 +166,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/school-transfer-letters/{schoolTransferLetter}/print', [SchoolTransferLetterController::class, 'print'])->name('school-transfer-letter.print');
 
     Route::get('/pindah-prodi', [PindahProdiController::class, 'index'])->name('pindah-prodi.index');
-    Route::get('/pindah-prodi/create', [PindahProdi::class, 'create'])->name('pindah-prodi.create');
-    Route::post('/pindah-prodi', [PindahProdi::class, 'store'])->name('pindah-prodi.store');
-    Route::get('/pindah-prodi/{PindahProdi}', [PindahProdi::class, 'show'])->name('pindah-prodi.show');
-    Route::get('/pindah-prodi/{PindahProdi}/edit', [PindahProdi::class, 'edit'])->name('pindah-prodi.edit');
-    Route::put('/pindah-prodi/{PindahProdi}', [PindahProdi::class, 'update'])->name('pindah-prodi.update');
-    Route::delete('/pindah-prodi/{PindahProdi}', [PindahProdi::class, 'destroy'])->name('pindah-prodi.destroy');
-    Route::put('/pindah-prodi/{PindahProdi}/verify', [PindahProdi::class, 'verify'])->name('pindah-prodi.verify');
-    Route::put('/pindah-prodi/{PindahProdi}/reject', [PindahProdi::class, 'reject'])->name('pindah-prodi.reject');
-    Route::get('/pindah-prodi/{PindahProdi}/print', [PindahProdi::class, 'print'])->name('pindah-prodi.print');
+    Route::get('/pindah-prodi/create', [PindahProdiController::class, 'create'])->name('pindah-prodi.create');
+    Route::post('/pindah-prodi', [PindahProdiController::class, 'store'])->name('pindah-prodi.store');
+    Route::get('/pindah-prodi/{pindahprodi}', [PindahProdiController::class, 'show'])->name('pindah-prodi.show');
+    Route::get('/pindah-prodi/{pindahprodi}/edit', [PindahProdiController::class, 'edit'])->name('pindah-prodi.edit');
+    Route::put('/pindah-prodi/{pindahprodi}', [PindahProdiController::class, 'update'])->name('pindah-prodi.update');
+    Route::delete('/pindah-prodi/{pindahprodi}', [PindahProdiController::class, 'destroy'])->name('pindah-prodi.destroy');
+    Route::put('/pindah-prodi/{pindahprodi}/verify', [PindahProdiController::class, 'verify'])->name('pindah-prodi.verify');
+    Route::put('/pindah-prodi/{pindahprodi}/reject', [PindahProdiController::class, 'reject'])->name('pindah-prodi.reject');
+    Route::get('/pindah-prodi/{pindahprodi}/print', [PindahProdiController::class, 'print'])->name('pindah-prodi.print');
 
     Route::get('/sppd-letters', [SppdLetterController::class, 'index'])->name('sppd-letter.index');
     Route::get('/sppd-letters/create', [SppdLetterController::class, 'create'])->name('sppd-letter.create');
@@ -230,4 +230,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/system/activities', [ActivityController::class, 'index'])->name('system.activities');
     Route::delete('/system/activities', [ActivityController::class, 'clear'])->name('system.activities.clear');
+
 });

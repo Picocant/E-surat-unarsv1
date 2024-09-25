@@ -282,6 +282,34 @@ class AuthServiceProvider extends ServiceProvider
             ]);
         });
 
+        Gate::define('create-pindah-prodi', function (User $user) {
+            return in_array($user->role, [
+                User::ROLE_KEPALA_TU,
+                User::ROLE_KEPALA_SEKOLAH,
+            ]);
+        });
+
+        Gate::define('update-pindah-prodi', function (User $user) {
+            return in_array($user->role, [
+                User::ROLE_KEPALA_TU,
+                User::ROLE_KEPALA_SEKOLAH,
+            ]);
+        });
+
+        Gate::define('delete-pindah-prodi', function (User $user) {
+            return in_array($user->role, [
+                User::ROLE_KEPALA_TU,
+                User::ROLE_KEPALA_SEKOLAH,
+            ]);
+        });
+
+        Gate::define('update-pindah-prodi-verification', function (User $user) {
+            return in_array($user->role, [
+                User::ROLE_KEPALA_TU,
+                User::ROLE_KEPALA_SEKOLAH,
+            ]);
+        });
+
         Gate::define('read-school-transfer-letter', function (User $user) {
             return in_array($user->role, [
                 User::ROLE_KEPALA_TU,
@@ -444,5 +472,8 @@ class AuthServiceProvider extends ServiceProvider
                 User::ROLE_KEPALA_TU,
             ]);
         });
+
+       
+
     }
 }

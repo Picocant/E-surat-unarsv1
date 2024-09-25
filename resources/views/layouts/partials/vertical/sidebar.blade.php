@@ -128,6 +128,16 @@
                             <a href="{{ route('student.index') }}" class='submenu-link'>Mahasiswa</a>
                         </li>
                         @endif
+                        @if (can('read-fakultas'))
+                        <li class="submenu-item">
+                            <a href="{{ route('fakultas.index') }}" class='submenu-link'>Fakultas</a>
+                        </li>
+                        @endif
+                        @if (can('read-prodi'))
+                        <li class="submenu-item">
+                            <a href="{{ route('prodi.index') }}" class='submenu-link'>Prodi</a>
+                        </li>
+                        @endif
                         @if (can('read-user'))
                         <li class="submenu-item">
                             <a href="{{ route('user.index') }}" class='submenu-link'>User / Pegawai

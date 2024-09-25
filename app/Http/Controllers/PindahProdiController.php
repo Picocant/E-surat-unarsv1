@@ -22,10 +22,10 @@ class PindahProdiController extends Controller
     {
         gate('read-pindah-prodi');
 
-        $pindahProdi = PindahProdi::orderBy('created_at', 'DESC')->get();
+        $pindahprodis = PindahProdi::orderBy('created_at', 'DESC')->get();
 
         return view('pindah-prodi.index', [
-            'pindahprodi' => $pindahProdi
+            'pindahprodis' => $pindahprodis
         ]);
     }
 
@@ -61,17 +61,17 @@ class PindahProdiController extends Controller
             'reason' => ['required'],
         ]);
 
-        $pindahProdi = PindahProdi::create([
+        $pindahprodis = PindahProdi::create([
             'student_id' => $data['student_id'],
             'new_prodi' => $data['new_prodi'],
             'reason' => $data['reason'],
         ]);
 
-        $pindahProdi->letter()->save(new Letter([
+        $pindahprodis->letter()->save(new Letter([
             'note' => 'Surat telah dibuat dan menunggu untuk diverifikasi'
         ]));
 
-        LetterCreated::dispatch(PindahProdi::class, $pindahProdi);
+        LetterCreated::dispatch(PindahProdi::class, $pindahprodis);
 
         Activity::dispatch('membuat surat keterangan pindah sekolah');
 
@@ -84,13 +84,13 @@ class PindahProdiController extends Controller
      * @param  \App\Models\PindahProdi  $prodiTransferLetter
      * @return \Illuminate\Http\Response
      */
-    public function show(PindahProdi $pindahProdi)
+    public function show(PindahProdi $pindahprodis)
     {
         gate('read-pindah-prodi');
 
         return view('pindah-prodi.show', [
-            'pindahprodi' => $pindahProdi
-        ]);
+            'pindahprodi' => $pindahprodis
+                ]);
     }
 
     /**
@@ -99,13 +99,13 @@ class PindahProdiController extends Controller
      * @param  \App\Models\PindahProdi  $prodiTransferLetter
      * @return \Illuminate\Http\Response
      */
-    public function edit(PindahProdi $pindahProdi)
+    public function edit(PindahProdi $pindahprodis)
     {
         gate('update-pindah-prodi');
 
         return view('pindah-prodi.edit', [
             'students' => Student::all(),
-            'pindahprodi' => $pindahProdi
+            'pindahprodi' => $pindahprodis
         ]);
     }
 
@@ -116,7 +116,7 @@ class PindahProdiController extends Controller
      * @param  \App\Models\PindahProdi  $prodiTransferLetter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PindahProdi $pindahProdi)
+    public function update(Request $request, PindahProdi $pindahprodis)
     {
         gate('update-pindah-prodi');
 
@@ -126,14 +126,14 @@ class PindahProdiController extends Controller
             'reason' => ['required'],
         ]);
 
-        $pindahProdi->student_id = $data['student_id'];
-        $pindahProdi->new_prodi = $data['new_prodi'];
-        $pindahProdi->reason = $data['reason'];
-        $pindahProdi->save();
+        $pindahprodis->student_id = $data['student_id'];
+        $pindahprodis->new_prodi = $data['new_prodi'];
+        $pindahprodis->reason = $data['reason'];
+        $pindahprodis->save();
 
         Activity::dispatch('memperbarui surat keterangan pindah sekolah');
 
-        return to_route('pindah-prodi.show', ['pindahprodi' => $pindahProdi])
+        return to_route('pindah-prodi.show', ['pindahprodi' => $pindahprodis])
             ->with('swal.success', 'Surat keterangan pindah sekolah berhasil diperbarui');
     }
 
@@ -143,28 +143,28 @@ class PindahProdiController extends Controller
      * @param  \App\Models\PindahProdi  $prodiTransferLetter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PindahProdi $pindahProdi)
+    public function destroy(PindahProdi $pindahprodis)
     {
         gate('delete-pindah-prodi');
 
-        if ($signature = $pindahProdi->letter->signature) {
+        if ($signature = $pindahprodis->letter->signature) {
             $signature->delete();
         }
-        $pindahProdi->delete();
-        $pindahProdi->letter()->delete();
+        $pindahprodis->delete();
+        $pindahprodis->letter()->delete();
 
-        Activity::dispatch('menghapus surat keterangan pindah sekolah');
+        Activity::dispatch('menghapus surat keterangan pindah prodi');
 
-        return to_route('pindah-prodi.index')->with('swal.success', 'Surat keterangan pindah sekolah berhasil dihapus');
+        return to_route('pindah-prodi.index')->with('swal.success', 'Surat keterangan pindah pindah berhasil dihapus');
     }
 
-    public function verify(Request $request, PindahProdi $pindahProdi)
+    public function verify(Request $request, PindahProdi $pindahprodis)
     {
         gate('update-pindah-prodi-verification');
 
-        if ($pindahProdi->letter->verified()) {
+        if ($pindahprodis->letter->verified()) {
             return back()->with('swal.warning', 'Surat sudah diverifikasi');
-        } elseif ($pindahProdi->letter->rejected()) {
+        } elseif ($pindahprodis->letter->rejected()) {
             return back()->with('swal.warning', 'Tidak dapat memverifikasi surat yang telah ditolak');
         }
 
@@ -172,27 +172,27 @@ class PindahProdiController extends Controller
             'note' => ['nullable', 'string', 'max:1000', 'min:5'],
         ]);
 
-        $pindahProdi->letter->verify($data['note'], [
+        $pindahprodis->letter->verify($data['note'], [
             "Jenis" => "Surat Keterangan Pindah Prodi",
-            "Nama Mahasiswa" => $pindahProdi->student->name,
-            "Alasan Pindah" => $pindahProdi->reason,
+            "Nama Mahasiswa" => $pindahprodis->student->name,
+            "Alasan Pindah" => $pindahprodis->reason,
         ]);
 
-        LetterVerified::dispatch(PindahProdi::class, $pindahProdi);
+        LetterVerified::dispatch(PindahProdi::class, $pindahprodis);
 
         Activity::dispatch('memverifikasi surat keterangan pindah Prodi');
 
-        return to_route('pindah-prodi.show', ['pindahprodi' => $pindahProdi])
+        return to_route('pindah-prodi.show', ['pindahprodi' => $pindahprodis])
             ->with('swal.success', 'Surat berhasil diverifikasi');
     }
 
-    public function reject(Request $request, PindahProdi $pindahProdi)
+    public function reject(Request $request, PindahProdi $pindahprodis)
     {
-        gate('update-prodi-transfer-letter-verification');
+        gate('update-pindah-prodi-verification');
 
-        if ($pindahProdi->letter->rejected()) {
+        if ($pindahprodis->letter->rejected()) {
             return back()->with('swal.warning', 'Surat sudah ditolak');
-        } elseif ($pindahProdi->letter->verified()) {
+        } elseif ($pindahprodis->letter->verified()) {
             return back()->with('swal.warning', 'Tidak dapat menolak surat yang telah diverifikasi');
         }
 
@@ -200,32 +200,32 @@ class PindahProdiController extends Controller
             'note' => ['nullable', 'string', 'max:1000', 'min:5'],
         ]);
 
-        $pindahProdi->letter->reject($data['note']);
+        $pindahprodis->letter->reject($data['note']);
 
-        LetterRejected::dispatch(PindahProdi::class, $pindahProdi);
+        LetterRejected::dispatch(PindahProdi::class, $pindahprodis);
 
         Activity::dispatch('menolak surat keterangan pindah sekolah');
 
-        return to_route('prodi-transfer-letter.show', ['prodiTransferLetter' => $prodiTransferLetter])
+        return to_route('pindah-prodi.show', ['pindahprodi' => $pindahprodis])
             ->with('swal.success', 'Surat telah ditolak');
     }
 
-    public function print(PindahProdi $pindahProdi)
+    public function print(PindahProdi $pindahprodis)
     {
-        gate('read-prodi-transfer-letter');
+        gate('read-pindah-prodi');
 
-        if (!$pindahProdi->letter->verified()) {
+        if (!$pindahprodis->letter->verified()) {
             return back()->with('swal.warning', 'Tidak dapat mencetak surat yang tidak terverifikasi');
         }
 
-        config(['page.title' => 'Surat Keterangan Pindah Sekolah - ' . $pindahProdi->student->name]);
+        config(['page.title' => 'Surat Keterangan Pindah Prodi - ' . $pindahprodis->student->name]);
 
-        $signature = $pindahProdi->letter->signature;
+        $signature = $pindahprodis->letter->signature;
         $decoded = json_decode($signature->payload, true);
         $url = url(route('signature.check', ['signature' => $signature]));
 
-        return view('prodi-transfer-letter.print', [
-            'prodiTransferLetter' => $pindahProdi,
+        return view('pindah-prodi.print', [
+            'pindahprodi' => $pindahprodis,
             'decoded' => $decoded,
             'url' => $url,
         ]);

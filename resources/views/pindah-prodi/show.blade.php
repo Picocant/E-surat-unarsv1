@@ -6,14 +6,14 @@
             <h3 class="mb-4">Surat Keterangan Pindah Prodi</h3>
             <div class="mb-3">
                 <a href="{{ route('pindah-prodi.index') }}" class="btn btn-sm btn-primary">Kembali</a>
-                @if ($pindahProdi->letter->verified())
+                @if ($pindahprodi->letter->verified())
                     <a target="_blank"
-                        href="{{ route('pindah-prodi.print', ['prindahprodi' => $pindahProdi]) }}"
+                        href="{{ route('pindah-prodi.print', ['prindahprodi' => $pindahprodi]) }}"
                         class="btn btn-sm btn-primary">Cetak</a>
                 @else
-                    @if ($pindahProdi->letter->waiting())
+                    @if ($pindahprodi->letter->waiting())
                         @if (can('update-pindah-prodi'))
-                            <a href="{{ route('pindah-prodi.edit', ['prindahprodi' => $pindahProdi]) }}"
+                            <a href="{{ route('pindah-prodi.edit', ['prindahprodi' => $pindahprodi]) }}"
                                 class="btn btn-sm btn-primary">Edit</a>
                         @endif
                         @if (can('update-pindah-prodi-verification'))
@@ -28,7 +28,7 @@
                 @endif
                 @if (can('delete-pindah-prodi'))
                     <form class="d-inline"
-                        action="{{ route('pindah-prodi.destroy', ['prindahprodi' => $pindahProdi]) }}"
+                        action="{{ route('pindah-prodi.destroy', ['prindahprodi' => $pindahprodi]) }}"
                         method="post">
                         @csrf
                         @method('delete')
@@ -38,20 +38,20 @@
                 @endif
             </div>
             <div>
-                @if ($pindahProdi->letter->verified())
+                @if ($pindahprodi->letter->verified())
                     <div role="alert" class="alert alert-light-success">
-                        <h6 class="fw-bold">Status: {{ $pindahProdi->letter->status }}</h6>
-                        <p>{{ $pindahProdi->letter->note }}</p>
+                        <h6 class="fw-bold">Status: {{ $pindahprodi->letter->status }}</h6>
+                        <p>{{ $pindahprodi->letter->note }}</p>
                     </div>
-                @elseif ($pindahProdi->letter->rejected())
+                @elseif ($pindahprodi->letter->rejected())
                     <div role="alert" class="alert alert-light-danger">
-                        <h6 class="fw-bold">Status: {{ $pindahProdi->letter->status }}</h6>
-                        <p>{{ $pindahProdi->letter->note }}</p>
+                        <h6 class="fw-bold">Status: {{ $pindahprodi->letter->status }}</h6>
+                        <p>{{ $pindahprodi->letter->note }}</p>
                     </div>
-                @elseif ($pindahProdi->letter->waiting())
+                @elseif ($pindahprodi->letter->waiting())
                     <div role="alert" class="alert alert-light-warning">
-                        <h6 class="fw-bold">Status: {{ $pindahProdi->letter->status }}</h6>
-                        <p>{{ $pindahProdi->letter->note }}</p>
+                        <h6 class="fw-bold">Status: {{ $pindahprodi->letter->status }}</h6>
+                        <p>{{ $pindahprodi->letter->note }}</p>
                     </div>
                 @endif
             </div>
@@ -62,38 +62,38 @@
                             <tr>
                                 <td>Tanggal Surat</td>
                                 <td>:</td>
-                                <td>{{ $pindahProdi->letter->created_at->isoFormat('DD MMMM Y') }}</td>
+                                <td>{{ $pindahprodi->letter->created_at->isoFormat('DD MMMM Y') }}</td>
                             </tr>
                             <tr>
                                 <td>Nomor Surat</td>
                                 <td>:</td>
                                 <td>
-                                    @if ($pindahProdi->letter->letter_number == null)
+                                    @if ($pindahprodi->letter->letter_number == null)
                                         <span class="badge bg-light-danger">Tidak ada</span>
                                     @else
-                                        {{ $pindahProdi->letter->letter_number }}
+                                        {{ $pindahprodi->letter->letter_number }}
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Nama Siswa</td>
                                 <td>:</td>
-                                <td>{{ $pindahProdi->student->name }}</td>
+                                <td>{{ $pindahprodi->student->name }}</td>
                             </tr>
                             <tr>
                                 <td>Nomor Induk</td>
                                 <td>:</td>
-                                <td>{{ $pindahProdi->student->student_number }}</td>
+                                <td>{{ $pindahprodi->student->student_number }}</td>
                             </tr>
                             <tr>
                                 <td>Tujuan Sekolah Baru</td>
                                 <td>:</td>
-                                <td>{{ $pindahProdi->new_school }}</td>
+                                <td>{{ $pindahprodi->new_school }}</td>
                             </tr>
                             <tr>
                                 <td>Alasan Pindah</td>
                                 <td>:</td>
-                                <td>{{ $pindahProdi->reason }}</td>
+                                <td>{{ $pindahprodi->reason }}</td>
                             </tr>
                         </table>
                     </div>

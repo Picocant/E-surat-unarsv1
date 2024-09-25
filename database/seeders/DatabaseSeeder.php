@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         DB::table('students')->delete();
         DB::table('users')->delete();
         DB::table('archives')->delete();
+        DB::table('fakultas')->delete();
 
         // Clear uploaded file
         Storage::deleteDirectory('avatars');
@@ -56,6 +57,8 @@ class DatabaseSeeder extends Seeder
             IncomingLetterDispositionSeeder::class,
 
             SchoolDocumentSeeder::class,
+            FakultasSeeder::class,
+            PindahProdiSeeder::class,
         ]);
     }
 }
