@@ -28,8 +28,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="new_school" class="form-label">Prodi Baru</label>
-                        <input type="text" name="new_school" id="new_school" class="form-control" value="{{ old('new_school') }}">
+                        <label for="new_prodi" class="form-label">Prodi Baru</label>
+                        <input type="text" name="new_prodi" id="new_prodi" class="form-control" value="{{ old('new_prodi') }}">
                     </div>
                     <div class="form-group">
                         <label for="reason" class="form-label">Alasan Pindah</label>

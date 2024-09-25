@@ -5,7 +5,7 @@
     <div class="col-lg-6 mx-auto">
         <h3 class="mb-4">Edit Surat Keterangan Pindah Prodi</h3>
         <div class="mb-3">
-            <a href="{{ route('pindah-prodi.show', ['pindahprodi' => $pindahProdi]) }}" class="btn btn-sm btn-primary">Kembali</a>
+            <a href="{{ route('pindah-prodi.show', ['pindahprodi' => $pindahprodi]) }}" class="btn btn-sm btn-primary">Kembali</a>
         </div>
         <div class="card">
             <div class="card-content">
@@ -15,14 +15,14 @@
                         terlebih dahulu.
                 </div>
                 @else
-                <form action="{{ route('pindah-prodi.update', ['pindahprodi' => $pindahProdi]) }}" method="post">
+                <form action="{{ route('pindah-prodi.update', ['pindahprodi' => $pindahprodi]) }}" method="post">
                     @csrf
                     @method('put')
                     <div class="form-group">
                         <label for="student_id" class="form-label">Mahasiswa</label>
                         <select class="form-control select2" name="student_id" id="student_id">
                             @foreach ($students as $student)
-                            <option {{ old('student_id', $pindahProdi->student_id) == $student->id ? 'selected' : '' }} value="{{ $student->id }}">{{ $student->student_number }} -
+                            <option {{ old('student_id', $pindahprodi->student_id) == $student->id ? 'selected' : '' }} value="{{ $student->id }}">{{ $student->student_number }} -
                                 {{ $student->name }}
                             </option>
                             @endforeach
@@ -30,11 +30,11 @@
                     </div>
                     <div class="form-group">
                         <label for="new_prodi" class="form-label">Prodi Baru</label>
-                        <input type="text" name="new_prodi" id="new_prodi" class="form-control" value="{{ old('new_prodi', $pindahProdi->new_prodi) }}">
+                        <input type="text" name="new_prodi" id="new_prodi" class="form-control" value="{{ old('new_prodi', $pindahprodi->new_prodi) }}">
                     </div>
                     <div class="form-group">
                         <label for="reason" class="form-label">Alasan Pindah</label>
-                        <textarea name="reason" class="form-control" id="reason">{{ old('reason', $pindahProdi->reason) }}</textarea>
+                        <textarea name="reason" class="form-control" id="reason">{{ old('reason', $pindahprodi->reason) }}</textarea>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

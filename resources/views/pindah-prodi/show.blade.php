@@ -8,12 +8,12 @@
                 <a href="{{ route('pindah-prodi.index') }}" class="btn btn-sm btn-primary">Kembali</a>
                 @if ($pindahprodi->letter->verified())
                     <a target="_blank"
-                        href="{{ route('pindah-prodi.print', ['prindahprodi' => $pindahprodi]) }}"
+                        href="{{ route('pindah-prodi.print', ['pindahprodi' => $pindahprodi]) }}"
                         class="btn btn-sm btn-primary">Cetak</a>
                 @else
                     @if ($pindahprodi->letter->waiting())
                         @if (can('update-pindah-prodi'))
-                            <a href="{{ route('pindah-prodi.edit', ['prindahprodi' => $pindahprodi]) }}"
+                            <a href="{{ route('pindah-prodi.edit', ['pindahprodi' => $pindahprodi]) }}"
                                 class="btn btn-sm btn-primary">Edit</a>
                         @endif
                         @if (can('update-pindah-prodi-verification'))
@@ -28,7 +28,7 @@
                 @endif
                 @if (can('delete-pindah-prodi'))
                     <form class="d-inline"
-                        action="{{ route('pindah-prodi.destroy', ['prindahprodi' => $pindahprodi]) }}"
+                        action="{{ route('pindah-prodi.destroy', ['pindahprodi' => $pindahprodi]) }}"
                         method="post">
                         @csrf
                         @method('delete')
@@ -86,9 +86,9 @@
                                 <td>{{ $pindahprodi->student->student_number }}</td>
                             </tr>
                             <tr>
-                                <td>Tujuan Sekolah Baru</td>
+                                <td>Tujuan Prodi Baru</td>
                                 <td>:</td>
-                                <td>{{ $pindahprodi->new_school }}</td>
+                                <td>{{ $pindahprodi->new_prodi }}</td>
                             </tr>
                             <tr>
                                 <td>Alasan Pindah</td>
@@ -103,7 +103,7 @@
     </div>
 
     <x-modal modal-id="verify-modal" modal-title="Verifikasi surat" modal-size="">
-        <form action="{{ route('pindah-prodi.verify', ['prindahprodi' => $pindahProdi]) }}"
+        <form action="{{ route('pindah-prodi.verify', ['pindahprodi' => $pindahprodi]) }}"
             method="POST">
             @csrf
             @method('put')
@@ -116,7 +116,7 @@
         </form>
     </x-modal>
     <x-modal modal-id="reject-modal" modal-title="Tolak surat" modal-size="">
-        <form action="{{ route('pindah-prodi.reject', ['prindahprodi' => $pindahProdi]) }}"
+        <form action="{{ route('pindah-prodi.reject', ['pindahprodi' => $pindahprodi]) }}"
             method="POST">
             @csrf
             @method('put')
