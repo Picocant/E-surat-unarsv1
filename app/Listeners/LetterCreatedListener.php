@@ -19,7 +19,7 @@ class LetterCreatedListener
      */
     public function handle(LetterCreated $event)
     {
-        $notifiables = User::where('role', User::ROLE_KEPALA_SEKOLAH)->get();
+        $notifiables = User::where('role', User::ROLE_REKTOR)->get();
 
         Notification::send($notifiables, new LetterVerificationNotice($event->model, $event->letter));
     }

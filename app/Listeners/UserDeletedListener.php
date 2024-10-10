@@ -24,7 +24,7 @@ class UserDeletedListener
         $event->deletedUser->notify(new AccountDeletedNotice());
 
         // send notification to Kepala TU role
-        $users = User::where('role', User::ROLE_KEPALA_TU)->get();
+        $users = User::where('role', User::ROLE_SUPERADMIN)->get();
         Notification::send($users, new TransactionalUserDeleted($event->deletedUser));
     }
 }

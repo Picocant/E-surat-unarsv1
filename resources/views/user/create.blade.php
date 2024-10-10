@@ -14,7 +14,7 @@
                     <div class="card-content">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name" class="sr-only form-label">Nama lengkap</label>
+                                <label for="name" class="form-label">Nama lengkap</label>
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">

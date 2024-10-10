@@ -22,10 +22,10 @@ class PindahProdiController extends Controller
     {
         gate('read-pindah-prodi');
 
-        $pindahprodi = PindahProdi::orderBy('created_at', 'DESC')->get();
+        $pindahprodis = PindahProdi::orderBy('created_at', 'DESC')->get();
 
         return view('pindah-prodi.index', [
-            'pindahprodis' => $pindahprodi
+            'pindahprodis' => $pindahprodis
         ]);
     }
 

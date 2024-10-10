@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('father');
             $table->string('mother');
             $table->string('guardian')->nullable();
-            $table->foreignUuid('fakultas_id')->nullable();
             $table->string('fakultas');
             $table->string('prodi');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -38,6 +38,7 @@ class StudentController extends Controller
 
         return view('student.create', [
             'genders' => Student::GENDERS,
+            'status' => Student::STATUS,
         ]);
     }
 
@@ -62,6 +63,7 @@ class StudentController extends Controller
             'guardian' => ['nullable', 'max:50'],
             'fakultas' => ['required', 'max:50'],
             'prodi' => ['required', 'max:50'],
+            'status' => ['required', Rule::in(Student::STATUS)],
         ]);
 
         Student::create([
@@ -75,6 +77,7 @@ class StudentController extends Controller
             'guardian' => $data['guardian'],
             'fakultas' => $data['fakultas'],
             'prodi' => $data['prodi'],
+            'status' => $data['status'],
         ]);
 
         Activity::dispatch('membuat data mahasiswa');
@@ -109,7 +112,8 @@ class StudentController extends Controller
 
         return view('student.edit', [
             'student' => $student,
-            'genders' => Student::GENDERS
+            'genders' => Student::GENDERS,
+            'status' => Student::STATUS
         ]);
     }
 
@@ -135,6 +139,7 @@ class StudentController extends Controller
             'guardian' => ['nullable', 'max:50'],
             'fakultas' => ['required', 'max:50'],
             'prodi' => ['required', 'max:50'],
+            'status' => ['required', Rule::in(Student::STATUS)],
         ]);
 
         $student->name = $data['name'];
@@ -147,6 +152,7 @@ class StudentController extends Controller
         $student->guardian = $data['guardian'];
         $student->fakultas = $data['fakultas'];
         $student->prodi = $data['prodi'];
+        $student->status = $data['status'];
         $student->save();
 
         Activity::dispatch('memperbarui data siswa');

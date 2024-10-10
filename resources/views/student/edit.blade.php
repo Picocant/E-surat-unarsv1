@@ -49,21 +49,21 @@
                             <label for="guardian" class="form-label">Nama wali (tidak wajib)</label>
                             <input type="text" name="guardian" id="guardian" class="form-control" value="{{ old('guardian', $student->guardian) }}">
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="fakultas" class="form-label">Nama Fakultas</label>
                             <input type="text" name="fakultas" id="fakultas" class="form-control" value="{{ old('fakultas', $student->fakultas) }}">
-                        </div> -->
-                        <div class="form-group">
-                            <label for="gender" class="form-label">Nama Fakultas</label>
-                            <select class="form-control" name="fakultas" id="fakultas">
-                                @foreach ($fakultas as $fakultas)
-                                <option {{ old('fakultas', $student->fakultas) == $fakultas ? 'selected' : '' }} value="{{ $fakultas }}">{{ $fakultas }}</option>
-                                @endforeach
-                            </select>
                         </div>
                         <div class="form-group">
                             <label for="prodi" class="form-label">Nama Prodi</label>
                             <input type="text" name="prodi" id="prodi" class="form-control" value="{{ old('prodi', $student->prodi) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" name="status" id="status">
+                                @foreach ($status as $status)
+                                <option {{ old('status', $student->status) == $status ? 'selected' : '' }} value="{{ $status }}">{{ $status }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

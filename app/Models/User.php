@@ -15,15 +15,15 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, UUIDPrimaryKey;
 
-    const ROLE_KEPALA_TU = 'Super Admin ';
-    const ROLE_STAF_TU = 'Admin';
-    const ROLE_KEPALA_SEKOLAH = 'Rektor';
-    const ROLE_GURU = 'Biro';
+    const ROLE_SUPERADMIN = 'Super Admin ';
+    const ROLE_REKTOR = 'Rektor';
+    const ROLE_BIRO1 = 'Biro 1';
+    const ROLE_BIRO2 = 'Biro 2';
     const ROLES = [
-        self::ROLE_KEPALA_TU,
-        self::ROLE_STAF_TU,
-        self::ROLE_KEPALA_SEKOLAH,
-        self::ROLE_GURU,
+        self::ROLE_SUPERADMIN,
+        self::ROLE_REKTOR,
+        self::ROLE_BIRO1,
+        self::ROLE_BIRO2,
     ];
 
     const GENDER_MALE = 'Laki-laki';

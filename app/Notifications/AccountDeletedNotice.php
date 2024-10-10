@@ -38,7 +38,7 @@ class AccountDeletedNotice extends Notification
         $mailMessage->line('Nama: ' . $notifiable->name);
         $mailMessage->line('Email: ' . $notifiable->email);
         $mailMessage->line('Jika anda merasa ini adalah kesalahan, harap segera laporkan ke pada salah satu administrator berikut:');
-        $admins = User::where('role', User::ROLE_KEPALA_TU)->get();
+        $admins = User::where('role', User::ROLE_SUPERADMIN)->get();
         foreach ($admins as $admin) {
             $mailMessage->line($admin->name . ' - (' . $admin->email . ')');
         }

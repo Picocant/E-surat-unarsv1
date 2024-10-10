@@ -56,6 +56,14 @@
                             <label for="prodi" class="form-label">Nama Prodi</label>
                             <input type="text" name="prodi" id="prodi" class="form-control" value="{{ old('prodi') }}">
                         </div>
+                        <div class="form-group">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" name="status" id="status">
+                            @foreach ($status as $status)
+                                <option {{ old('status') == $status ? 'selected' : '' }} value="{{ $status }}">{{ $status }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

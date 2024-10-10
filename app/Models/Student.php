@@ -12,10 +12,21 @@ class Student extends Model
 
     const GENDER_MALE = 'Laki-laki';
     const GENDER_FEMALE = 'Perempuan';
+    const STATUS_AKTIF = 'Aktif';
+    const STATUS_CUTI = 'Cuti';
+    const STATUS_NONAKTIF = 'Tidak Aktif';
+    const STATUS_ALUMNI = 'Alumni';
     const GENDERS = [
         self::GENDER_MALE,
         self::GENDER_FEMALE,
     ];
+    Const STATUS =[
+        self::STATUS_AKTIF,
+        self::STATUS_CUTI,
+        self::STATUS_NONAKTIF,
+        self::STATUS_ALUMNI,
+        
+    ] ;
 
     protected $fillable =  [
         'name',
@@ -28,6 +39,7 @@ class Student extends Model
         'guardian',
         'fakultas',
         'prodi',
+        'status',
     ];
 
     protected $casts = [
