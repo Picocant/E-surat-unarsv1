@@ -20,7 +20,7 @@ class NewIncomingLetterListener
     public function handle(NewIncomingLetter $event)
     {
         $incomingLetter = $event->incomingLetter;
-        $notifiables = User::where('role', User::ROLE_KEPALA_SEKOLAH)->get();
+        $notifiables = User::where('role', User::ROLE_REKTOR)->get();
         Notification::send($notifiables, new TransactionalNewIncomingLetter($incomingLetter));
     }
 }

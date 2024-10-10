@@ -31,9 +31,9 @@ class LetterRejectedListener
      */
     public function handle(LetterRejected $event)
     {
-        $notifiables = User::where('role', User::ROLE_KEPALA_SEKOLAH)
-            ->orWhere('role', User::ROLE_KEPALA_TU)
-            ->orWhere('role', User::ROLE_STAF_TU)
+        $notifiables = User::where('role', User::ROLE_REKTOR)
+            ->orWhere('role', User::ROLE_SUPERADMIN)
+            ->orWhere('role', User::ROLE_BIRO1)
             ->get();
 
         Notification::send($notifiables, new TransactionalLetterRejected($event->model, $event->letter));

@@ -26,7 +26,8 @@ class StudentSeeder extends Seeder
             "mother" => "Zulaikha Puspasari M.Ak",
             "guardian" => "Ozy Martaka Utama",
             "fakultas" => "Teknik",
-            "prodi" => "informatika"
+            "prodi" => "informatika",
+            "status" => "Aktif"
         ]))->save();
         (new Student([
             "name" => "Luthfi Gunawan",
@@ -38,7 +39,8 @@ class StudentSeeder extends Seeder
             "mother" => "Fitriani Puspita S.Psi",
             "guardian" => "Karya Tampubolon",
             "fakultas" => "Teknik",
-            "prodi" => "informatika"
+            "prodi" => "informatika",
+            "status" => "Cuti"
         ]))->save();
         
     }

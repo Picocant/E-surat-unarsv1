@@ -69,7 +69,12 @@
                         <tr>
                             <td>Prodi</td>
                             <td>:</td>
-                            <td>{{ $student->fakultas }}</td>
+                            <td>{{ $student->prodi }}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td>{{ $student->status }}</td>
                         </tr>
                     </table>
                 </div>

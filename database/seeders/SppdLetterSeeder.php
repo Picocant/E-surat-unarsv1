@@ -18,12 +18,12 @@ class SppdLetterSeeder extends Seeder
      */
     public function run()
     {
-        $kepalaSekolah = User::where('role', User::ROLE_KEPALA_SEKOLAH)->first();
-        $users = User::where('role', '!=', User::ROLE_KEPALA_SEKOLAH)->get();
+        $rektor = User::where('role', User::ROLE_REKTOR)->first();
+        $users = User::where('role', '!=', User::ROLE_REKTOR)->get();
 
         foreach ($users as $index => $user) {
             $sppdLetter = new SppdLetter;
-            $sppdLetter->from_user_id = $kepalaSekolah->id;
+            $sppdLetter->from_user_id = $rektor->id;
             $sppdLetter->budget = 2000000;
             $sppdLetter->start_date = now()->format('Y-m-d');
             $sppdLetter->end_date = now()->addDays(5)->format('Y-m-d');
